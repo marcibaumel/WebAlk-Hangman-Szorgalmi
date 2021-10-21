@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "text": "alma",
+    "level": "EASY"
+  },
+  {
+    "id": "2",
+    "text": "maci",
+    "level": "EASY"
+  },
+  {
+    "id": "3",
+    "text": "tetű",
+    "level": "NORMAL"
+  },
+  {
+    "id": "4",
+    "text": "leopard",
+    "level": "NORMAL"
+  },
+  {
+    "id": "5",
+    "text": "kenguru",
+    "level": "HARD"
+  }
+]
