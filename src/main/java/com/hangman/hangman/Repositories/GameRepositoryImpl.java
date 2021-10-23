@@ -9,34 +9,42 @@ import java.util.List;
 public class GameRepositoryImpl implements GameRepository {
 
     private final List<Character> characterList = new ArrayList<>();
-    private final List<Character> allUsedCharacterList = new ArrayList<>();
+    private final List<Character> correctCharacterList = new ArrayList<>();
+    private final List<Character> usedCharacterList = new ArrayList<>();
     private int Health = 6;
 
     @Override
-    public String newCharacter(char newCharacter) {
-        if(!inList(newCharacter)){
-            System.out.println(newCharacter+" already in the character list or wrong character.");
-            Health--;
-            allUsedCharacterList.add(newCharacter);
-            if(Health == 0){
-                System.out.println("Game over");
+    public void setTheCharacterList(String randomVerb){
+        for (char ch : randomVerb.toCharArray()) {
+            if(!characterList.contains(ch)) {
+                characterList.add(ch);
             }
         }
-        characterList.add(newCharacter);
-        return newCharacter+" added to the list";
     }
 
     @Override
-    public List<Character> getExistingCharacters() {
+    public void setPlayerCharacterList(Character word){
+        if(characterList.contains(word)){
+            correctCharacterList.add(word);
+        }
+        else {
+            usedCharacterList.add(word);
+        }
+    }
+
+    @Override
+    public List<Character> getCharacterList() {
         return characterList;
     }
 
+    @Override
+    public List<Character> getGoodCharacterList() {
+        return correctCharacterList;
+    }
 
-    public boolean inList(char character) {
-        if(characterList.contains(character)){
-            return false;
-        }
-        return true;
+    @Override
+    public List<Character> getUsedCharacterList() {
+        return usedCharacterList;
     }
 
 

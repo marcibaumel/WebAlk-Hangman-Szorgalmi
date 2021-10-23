@@ -11,7 +11,6 @@ import java.util.List;
 public class WordRepositoryImpl implements WordRepository {
 
     private UnitOfWork unitOfWork = new UnitOfWork();
-    //private final List<WordModel> words = unitOfWork.wordModelList;
 
     @Override
     public List<WordModel> findAllWord() {
