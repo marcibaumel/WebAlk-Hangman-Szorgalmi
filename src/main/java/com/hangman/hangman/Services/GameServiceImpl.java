@@ -30,8 +30,6 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public String game(){
-        gameRepository.setPlayerCharacterList('a');
-        gameRepository.setPlayerCharacterList('l');
         gameRepository.setTheCharacterList(randomVerb);
         StringBuilder actualWord= new StringBuilder();
         for(int i = 0; i < randomVerb.length(); i++){
@@ -45,4 +43,6 @@ public class GameServiceImpl implements GameService {
         String result = actualWord.toString();
         return result;
     }
+
+    //TODO: setCharacterList upload, health counter, game over in the game, usedCharacter list upload, write out used characters
 }
