@@ -1,9 +1,11 @@
 package com.hangman.hangman.Dao;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hangman.hangman.Models.WordModel;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -21,8 +23,9 @@ public class UnitOfWork {
     public List<WordModel> worldReader(){
         try {
             Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<WordModel>>() {}.getType();
             Reader reader = Files.newBufferedReader(Paths.get("src/main/java/com/hangman/hangman/Dao/data.json"));
-            List<WordModel> resultList = gson.fromJson(reader, ArrayList.class);
+            List<WordModel> resultList = gson.fromJson(reader, listType);
             reader.close();
             return resultList;
         } catch (Exception ex) {

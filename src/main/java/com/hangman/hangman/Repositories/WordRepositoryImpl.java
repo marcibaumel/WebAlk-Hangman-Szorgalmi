@@ -11,11 +11,11 @@ import java.util.List;
 public class WordRepositoryImpl implements WordRepository {
 
     private UnitOfWork unitOfWork = new UnitOfWork();
-    private final List<WordModel> words = unitOfWork.wordModelList;
+    //private final List<WordModel> words = unitOfWork.wordModelList;
 
     @Override
     public List<WordModel> findAllWord() {
-        return words;
+        return unitOfWork.wordModelList;
     }
 
     @Override
@@ -31,18 +31,20 @@ public class WordRepositoryImpl implements WordRepository {
             return null;
         }
         else {
-            return words.get(wordById);
+            return unitOfWork.wordModelList.get(wordById);
         }
 
     }
 
     public int findWord(Long id) {
         int found = -1;
-        for (int i = 0; i < words.size(); i++) {
-            if (words.get(i).getId().equals(id)) {
+        for (int i = 0; i < unitOfWork.wordModelList.size(); i++) {
+
+            if(unitOfWork.wordModelList.get(i).getId() == id){
                 found = i;
                 break;
             }
+
         }
         return found;
     }
