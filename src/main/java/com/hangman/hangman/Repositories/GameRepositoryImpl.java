@@ -11,7 +11,7 @@ public class GameRepositoryImpl implements GameRepository {
     private final List<Character> characterList = new ArrayList<>();
     private final List<Character> correctCharacterList = new ArrayList<>();
     private final List<Character> usedCharacterList = new ArrayList<>();
-    private int Health = 6;
+    private int Health;
 
     @Override
     public void setTheCharacterList(String randomVerb){
@@ -28,6 +28,7 @@ public class GameRepositoryImpl implements GameRepository {
             correctCharacterList.add(word);
         }
         else {
+            Health--;
             usedCharacterList.add(word);
         }
     }
@@ -45,6 +46,16 @@ public class GameRepositoryImpl implements GameRepository {
     @Override
     public List<Character> getUsedCharacterList() {
         return usedCharacterList;
+    }
+
+    @Override
+    public int getHealth() {
+        return Health;
+    }
+
+    @Override
+    public void setHealth(int value) {
+        this.Health = Health + value;
     }
 
 

@@ -1,9 +1,9 @@
 package com.hangman.hangman.Controllers;
 
 import com.hangman.hangman.Services.GameService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @RestController
 @RequestMapping(path="/game")
@@ -17,7 +17,13 @@ public class GameController {
     @GetMapping(path="")
     public String startTheGame(){
         String result = gameService.game();
-        return result;
+        return result+"     Used characters: "+gameService.writeOutUsedCharacterLists()+"     Health: "+gameService.actualHealth();
     }
+
+    @PostMapping(path="/{char}")
+    public String makeAGuess(@PathVariable("char") String c){
+        return gameService.guess(c);
+    }
+
 
 }

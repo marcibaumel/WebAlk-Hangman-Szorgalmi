@@ -8,4 +8,6 @@ public interface GameRepository {
     List<Character> getCharacterList();
     List<Character> getGoodCharacterList();
     List<Character> getUsedCharacterList();
+    int getHealth();
+    void setHealth(int value);
 }
